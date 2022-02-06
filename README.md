@@ -52,9 +52,4 @@ to access and test your code, follow the istructions below for more detteils:
 * condor@INFN [https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job](https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job)
 * file IO [https://codimd.infn.it/s/pbisNdDlN](https://codimd.infn.it/s/pbisNdDlN)
 
-
-
-
-     docker-compose down
-
   
