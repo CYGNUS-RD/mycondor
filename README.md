@@ -1,6 +1,6 @@
-# Cygno Condor Container
+# CYGNO Condor Container
 
-Submit Jobs on CYGNO condor INFN Cloud Queue
+Submit jobs on CYGNO condor INFN Cloud queue
 
 requirements:
 
