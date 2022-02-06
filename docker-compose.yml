@@ -10,6 +10,7 @@ services:
     volumes:
       - ${PWD}/submituser:/home/submituser/
       - ${PWD}/conf/condor_config.local:/etc/condor/condor_config.local
-      - ${PWD}/conf/gettoken.sh:/usr/bin/gettoken.sh
+      - ${PWD}/conf/gettoken.sh:/usr/bin/gettoken
+      - ${PWD}/conf/start_script.sh:/start_script.sh
 
-    command: /bin/sh -c "/home/submituser/start_script.sh && tail -f /dev/null"
+    command: /bin/sh -c "/start_script.sh && tail -f /dev/null"
