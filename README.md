@@ -32,7 +32,7 @@ bought through the *cloud terminal* or in the *container shell*, firstly you hav
 
       [root@5045c42ec547 /]# gettoken
 
-follow the istrctions and press enter to any question, check if all is right e.g. monotoring the condor queue status
+follow the istrctions and press enter to any question (do not enter any password), check if all is right e.g. monotoring the condor queue status
 
       [root@5045c42ec547 /]# condor_status
       Name                    OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
