@@ -25,7 +25,7 @@ when up, connect via shell to the Cygno Condor Container
      
 ### Submit a job 
 
-bought through the *cloud terminal* or in the *container shell*, firstly you have to get the INFN token giving the command ***gettoken*** to the prompt
+bought through the *cloud terminal* or in the *container shell*, firstly you have to get the INFN token giving the command **gettoken** to the prompt
 
       [root@5045c42ec547 /]# gettoken
 
@@ -50,7 +50,7 @@ Now you are up and running. On in the container shell you can change directory t
       
       cd /home/submituser/
       
-on the cloud you have to change the directory and upload via web interface your software/directory with your code. The ***private** is permanent directory.
+on the cloud you have to change the directory and upload via web interface your software/directory with your code. The **private** is permanent directory.
 
       cd private/
 
