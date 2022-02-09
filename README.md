@@ -49,11 +49,7 @@ follow the istrctions and press enter to any question, check if all is right e.g
 
                Total        5     0       0         5       0          0      0
 
-Now you are up and running. On in the container shell you can change directory to the shared folder with your PC where you can put your software
-      
-      cd private/
-      
-on the cloud you have to change the directory and upload via web interface your software/directory with your code. The **private** is permanent directory.
+Now you are up and running. On in the container shell you can change directory to the shared folder with your PC where you can put your software. On the cloud you have to change the directory and upload via web interface your software/directory with your code. The **private** is permanent directory.
 
       cd private/
 
