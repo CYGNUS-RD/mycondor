@@ -12,7 +12,7 @@ download Cygno Condor Container configuration
       git clone https://github.com/CYGNUS-RD/mycondor.git
       cd mycondor/
 
-in the directory ***submituser*** you will find example and there you have to copy/move your code to be submitted. The folder is shared with running container and continuosly updated
+in the directory ***private*** you will find example and there you have to copy/move your code to be submitted. The folder is shared with running container and continuosly updated
 
 run Cygno Condor Container (first time it take some time to download the container image)
 
