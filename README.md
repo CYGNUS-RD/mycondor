@@ -24,7 +24,7 @@ when up, connect via shell to the Cygno Condor Container
      
 <image name>  is tipicaly *mycondor-condor-1* or *mycondor_condor_1* depending your system. you can always get the name of the immage by the command **docker ps**:
                                                                                                    
-       docker ps
+       mycondor mazzitel$ docker ps
        CONTAINER ID   IMAGE                 COMMAND                  CREATED       STATUS       PORTS      NAMES
        d872b92ee256   dodasts/mini-htc:v0   "/bin/sh -c '/start_…"   4 hours ago   Up 4 hours   9618/tcp   mycondor-condor-1 
     
