@@ -1,11 +1,11 @@
 #!/bin/bash
 
 sleep 100
-echo $HOSTNAME
+echo $HOSTNAME > prova.txt
 
 sleep 100
-echo $HOSTNAME
+echo $HOSTNAME >> prova.txt
 
 sleep 100
-echo $HOSTNAME
+echo $HOSTNAME >> prova.txt
 echo "ciao"
