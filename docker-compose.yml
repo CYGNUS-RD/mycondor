@@ -8,7 +8,7 @@ services:
       IAM_SCOPES: 'openid profile email offline_access wlcg wlcg.groups'
 
     volumes:
-      - ${PWD}/submituser:/home/submituser/
+      - ${PWD}/private:/private/
       - ${PWD}/conf/condor_config.local:/etc/condor/condor_config.local
       - ${PWD}/conf/gettoken.sh:/usr/bin/gettoken
       - ${PWD}/conf/start_script.sh:/start_script.sh
