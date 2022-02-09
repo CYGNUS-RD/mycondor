@@ -12,7 +12,7 @@ download Cygno Condor Container configuration
       git clone https://github.com/CYGNUS-RD/mycondor.git
       cd mycondor/
 
-in the directory ***submituser*** you will find example and there you have to copy/move your code to be submitted. The folder is shared with running container and continuosly updated
+in the directory ***private*** you will find example and there you have to copy/move your code to be submitted. The folder is shared with running container and continuosly updated
 
 run Cygno Condor Container (first time it take some time to download the container image)
 
@@ -32,7 +32,7 @@ bought through the *cloud terminal* or in the *container shell*, firstly you hav
 
       [root@5045c42ec547 /]# gettoken
 
-follow the istrctions and press enter to any question, check if all is right e.g. monotoring the condor queue status
+follow the istrctions and press enter to any question (do not enter any password), check if all is right e.g. monotoring the condor queue status
 
       [root@5045c42ec547 /]# condor_status
       Name                    OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
@@ -49,11 +49,7 @@ follow the istrctions and press enter to any question, check if all is right e.g
 
                Total        5     0       0         5       0          0      0
 
-Now you are up and running. On in the container shell you can change directory to the shared folder with your PC where you can put your software
-      
-      cd private/
-      
-on the cloud you have to change the directory and upload via web interface your software/directory with your code. The **private** is permanent directory.
+Now you are up and running. On in the container shell you can change directory to the shared folder with your PC where you can put your software. On the cloud you have to change the directory and upload via web interface your software/directory with your code. The **private** is permanent directory.
 
       cd private/
 
