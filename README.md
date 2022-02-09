@@ -20,8 +20,11 @@ run Cygno Condor Container (first time it take some time to download the contain
       
 when up, connect via shell to the Cygno Condor Container 
 
-      docker exec -it mycondor_condor_1 /bin/bash
+      docker exec -it <image name> /bin/bash
      
+<image name>  is tipicaly *mycondor-condor-1* or *mycondor_condor_1* depending system e.g.:
+                                                                                                   
+       ⠿ Container mycondor-condor-1  Started  
      
 ### Submit a job 
 
