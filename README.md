@@ -1,17 +1,18 @@
-# CYGNO Condor Container
+# CYGNO Condor Queue
 
 Submit jobs on CYGNO condor INFN Cloud queue
 
-requirements:
+there are two way to submit job under the experiment queue:
+1) cccess to cloud https://notebook.cygno.cloud.infn.it:8888/ open a terminal and follow the istruction to submit a job
+2) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc.
 
-Download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
-
+### Cygno Condor Container###
 download Cygno Condor Container configuration 
 
       git clone https://github.com/CYGNUS-RD/mycondor.git
       cd mycondor/
 
-in the directory ***submituser*** you will find example and there you have to copy/mouve your code to be submitted. The folder is shared with running container and continuosly updated
+in the directory ***submituser*** you will find example and there you have to copy/move your code to be submitted. The folder is shared with running container and continuosly updated
 
 run Cygno Condor Container 
 
@@ -20,9 +21,11 @@ run Cygno Condor Container
 when up, connect via shell to the Cygno Condor Container 
 
       docker exec -it mycondor_condor_1 /bin/bash
-      
-      
-get the INFN Cloud token giving the command ***gettoken*** to the prompt
+     
+     
+### Submit a job ###
+
+bought through the *cloud terminal* or in the *container shell*, firstly you have to get the INFN token giving the command ***gettoken*** to the prompt
 
       [root@5045c42ec547 /]# gettoken
 
@@ -43,16 +46,20 @@ follow the istrctions and press enter to any question, check if all is right e.g
 
                Total        5     0       0         5       0          0      0
 
-Now you are up and running 
+Now you are up and running. On in the container shell you can change directory to the shared folder with your PC where you can put your software
       
       cd /home/submituser/
+      
+on the cloud you have to change the directory and upload via web interface your software/directory with your code. The ***private** is permanent directory.
+
+      cd private/
 
 to access and test your code, follow the istructions below for more detteils: 
 
 * condor@INFN [https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job](https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job)
 * file IO [https://codimd.infn.it/s/pbisNdDlN](https://codimd.infn.it/s/pbisNdDlN)
 
-***Tips***: you can exit when you like from the contaner and reconnect with ***docker exec -it mycondor_condor_1 /bin/bash*** command; to stop the container (you actually can have it running forever) give de command ***docker-compose down***; all the files are shared via the local foleder ***mycondor/submituser*** also if you are not connected to the container; if you can't access the queues try first to refresh the token via ***gettoken*** command
+***Tip on containers***: you can exit when you like from the contaner and reconnect with ***docker exec -it mycondor_condor_1 /bin/bash*** command; to stop the container (you actually can have it running forever) give de command ***docker-compose down***; all the files are shared via the local foleder ***mycondor/submituser*** also if you are not connected to the container; if you can't access the queues try first to refresh the token via ***gettoken*** command
 
 
   
