@@ -32,7 +32,7 @@ copy and paste:
       ### 
       chmod +x /usr/bin/gettoken
       
-save and exit (ESC: wq), then follow thr istraction [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
+save and exit (ESC: wq), then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
 
 ### Cygno Condor Container
 download Cygno Condor Container configuration 
@@ -56,7 +56,7 @@ when up, connect via shell to the Cygno Condor Container
        CONTAINER ID   IMAGE                 COMMAND                  CREATED       STATUS       PORTS      NAMES
        d872b92ee256   dodasts/mini-htc:v0   "/bin/sh -c '/start_…"   4 hours ago   Up 4 hours   9618/tcp   mycondor-condor-1 
       
-the follow teh sitraction below :
+then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
       
 ### Submit a job 
 
