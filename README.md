@@ -32,6 +32,7 @@ copy and paste:
       ### 
       chmod +x /usr/bin/gettoken
 
+then
 
       source ~/.bashrc
       
