@@ -10,8 +10,7 @@ there are two way to submit job under the experiment queue:
 to config once forever your condor eviroment open a terminal and:
 
       cd private
-      wget https://raw.githubusercontent.com/CYGNUS-RD/mycondor/main/conf/condor_config.local; cp ./condor_config.local /etc/condor/
-      wget https://raw.githubusercontent.com/CYGNUS-RD/mycondor/main/conf/gettoken; chmod +x gettoken 
+      wget https://raw.githubusercontent.com/CYGNUS-RD/mycondor/main/conf/cloudconf.sh; sh cloudconf.sh;
 
 ### Cygno Condor Container
 download Cygno Condor Container configuration 
