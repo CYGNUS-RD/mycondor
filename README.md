@@ -31,6 +31,9 @@ copy and paste:
       EOF
       ### 
       chmod +x /usr/bin/gettoken
+
+
+      source ~/.bashrc
       
 save and exit (ESC: wq), then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
 
