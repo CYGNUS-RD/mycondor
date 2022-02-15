@@ -7,7 +7,7 @@ there are two way to submit job under the experiment queue:
 2) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an then follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
 
 ### Cygno Condor Cloud
-to config once forever your condor eviroment open a terminal and edi your bashrc profile:
+to config once forever your condor eviroment open a terminal and edit your bashrc profile:
 
       vi ~/.bashrc
 
