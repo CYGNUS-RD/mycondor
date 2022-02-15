@@ -9,7 +9,7 @@ there are two way to submit job under the experiment queue:
 ### Cygno Condor from Cloud terinal 
 to config once forever your condor eviroment open a terminal and:
 
-      cd private
+      vi ~/.bashrc
       wget https://raw.githubusercontent.com/CYGNUS-RD/mycondor/main/conf/cloudconf.sh; sh cloudconf.sh;
 
 ### Cygno Condor Container
