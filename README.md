@@ -3,13 +3,15 @@
 Submit jobs on CYGNO condor INFN Cloud queue
 
 there are two way to submit job under the experiment queue:
-1) acccess to cloud https://notebook.cygno.cloud.infn.it:8888/ open a terminal and follow the istruction to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
-3) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc.
+1) acccess to cloud https://notebook.cygno.cloud.infn.it:8888/ open a terminal and follow the [istruction](https://github.com/CYGNUS-RD/mycondor#cygno-condor-from-cloud-terinal)
+2) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an the follow the [istruction](https://github.com/CYGNUS-RD/mycondor#cygno-condor-from-cloud-terinal)
 
-### Cygno Condor from Cloud terinal 
-to config once forever your condor eviroment open a terminal and:
+### Config Cygno Condor for Cloud terminal
+to config once forever your condor eviroment open a terminal and edi your bashrc profile:
 
       vi ~/.bashrc
+
+copy and paste:
 
       # confiig conndor CYGNO queue
       cat > /etc/condor/condor_config.local << EOF 
@@ -29,6 +31,8 @@ to config once forever your condor eviroment open a terminal and:
       EOF
       ### 
       chmod +x /usr/bin/gettoken
+      
+then follow thr istraction [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
 
 ### Cygno Condor Container
 download Cygno Condor Container configuration 
@@ -51,7 +55,9 @@ when up, connect via shell to the Cygno Condor Container
        mycondor mazzitel$ docker ps
        CONTAINER ID   IMAGE                 COMMAND                  CREATED       STATUS       PORTS      NAMES
        d872b92ee256   dodasts/mini-htc:v0   "/bin/sh -c '/start_…"   4 hours ago   Up 4 hours   9618/tcp   mycondor-condor-1 
-    
+      
+the follow teh sitraction below :
+      
 ### Submit a job 
 
 bought through the *cloud terminal* or in the *container shell*, firstly you have to get the INFN token giving the command **gettoken** to the prompt
