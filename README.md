@@ -32,7 +32,7 @@ copy and paste:
       ### 
       chmod +x /usr/bin/gettoken
       
-then follow thr istraction [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
+save and exit (ESC: wq), then follow thr istraction [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
 
 ### Cygno Condor Container
 download Cygno Condor Container configuration 
