@@ -4,7 +4,7 @@ Submit jobs on CYGNO condor INFN Cloud queue
 
 there are two way to submit job under the experiment queue:
 1) acccess to cloud https://notebook.cygno.cloud.infn.it:8888/ open a terminal and follow the [istruction for Cygno Condor Cloud](https://github.com/CYGNUS-RD/mycondor#cygno-condor-cloud)
-2) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an the follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
+2) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an then follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
 
 ### Cygno Condor Cloud
 to config once forever your condor eviroment open a terminal and edi your bashrc profile:
