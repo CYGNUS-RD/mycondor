@@ -11,7 +11,8 @@ to config once forever your condor eviroment open a terminal and edit your bashr
 
     vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
 
-copy and paste:
+copy and paste the following lines:
+
     #!/bin/bash
     #
     # CLOUD INFN version 15/2/2
