@@ -42,18 +42,18 @@ save and exit (ESC: wq), then follow the istraction below to [submit a job](http
 ### Cygno Condor Container
 download Cygno Condor Container configuration 
 
-      git clone https://github.com/CYGNUS-RD/mycondor.git
-      cd mycondor/
+    git clone https://github.com/CYGNUS-RD/mycondor.git
+    cd mycondor/
 
 in the directory ***private*** you will find example and there you have to copy/move your code to be submitted. The folder is shared with running container and continuosly updated
 
 run Cygno Condor Container (first time it take some time to download the container image)
 
-      docker-compose up -d
+    docker-compose up -d
       
 when up, connect via shell to the Cygno Condor Container 
 
-      docker exec -it <image name> /bin/bash
+    docker exec -it <image name> /bin/bash
      
 <image name>  is tipicaly *mycondor-condor-1* or *mycondor_condor_1* depending your system. you can always get the name of the immage by the command **docker ps**:
                                                                                                    
