@@ -12,7 +12,9 @@ to config once forever your condor eviroment open a terminal and edit your bashr
     vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
 
 copy and paste:
-
+    #!/bin/bash
+    #
+    # CLOUD INFN version 15/2/2
     # confiig conndor CYGNO queue
     cat > /etc/condor/condor_config.local << EOF 
     AUTH_SSL_CLIENT_CAFILE = /etc/pki/ca-trust/source/anchors/htcondor_ca.crt
