@@ -33,11 +33,11 @@ copy and paste the following lines:
     echo "*/10 * * * * eval \`oidc-keychain\` && echo \`oidc-token infncloud-wlcg -s \"openid profile offline_access wlcg wlcg.groups\"\` > /tmp/token" | crontab - 
     chmod +x /usr/bin/gettoken
 
-then
+then:
 
     source /jupyter-workspace/cloud-storage/USERNAME/.bashrc
       
-save and exit (ESC: wq), then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
+save and exit (ESC: wq), then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job). N.B. your profile .bashrc setup have to be recreated for any different container verision.
 
 ### Cygno Condor Container
 download Cygno Condor Container configuration 
