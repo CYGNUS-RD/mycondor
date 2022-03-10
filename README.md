@@ -54,7 +54,7 @@ then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/
       
 ### Submit a job 
 
-bought through the *cloud terminal* or in the *container shell*, firstly you have to get the INFN token giving the command **gettoken** to the prompt
+ONLY on Container you need to get the tocken qith the command **gettoken** to the prompt
 
       [root@5045c42ec547 /]# gettoken
 
