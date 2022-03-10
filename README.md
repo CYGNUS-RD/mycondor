@@ -28,7 +28,7 @@ then (only first time afeter editing):
       
 save and exit (ESC: wq), then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job). N.B. your profile .bashrc setup have to be recreated for any different container verision.
 
-### Cygno Condor Container
+### Cygno Condor Container (optional)
 download Cygno Condor Container configuration 
 
     git clone https://github.com/CYGNUS-RD/mycondor.git
@@ -50,15 +50,16 @@ when up, connect via shell to the Cygno Condor Container
        CONTAINER ID   IMAGE                 COMMAND                  CREATED       STATUS       PORTS      NAMES
        d872b92ee256   dodasts/mini-htc:v0   "/bin/sh -c '/start_…"   4 hours ago   Up 4 hours   9618/tcp   mycondor-condor-1 
       
-then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
-      
-### Submit a job 
-
-ONLY on Container you need to get the tocken qith the command **gettoken** to the prompt
+then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job) 
+ONLY on Container (not from netebook terminal) you need to get the tocken any time you need with the command **gettoken** to the prompt
 
       [root@5045c42ec547 /]# gettoken
-
-follow the istrctions and press enter to any question (do not enter any password), check if all is right e.g. monotoring the condor queue status
+    
+follow the istrctions and press enter to any question (do not enter any password) 
+      
+### Submit a job 
+    
+check if all is right e.g. monotoring the condor queue status
 
       [root@5045c42ec547 /]# condor_status
       Name                    OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
