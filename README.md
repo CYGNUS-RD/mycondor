@@ -7,7 +7,10 @@ there are two way to submit job under the experiment queue:
 2) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an then follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
 
 ### Cygno Condor Cloud in your notebook (once forever)
-to config once forever your condor eviroment open a terminal and edit your bashrc profile (whwre USER is your username):
+* connect to cygno cloud interface: https://notebook.cygno.cloud.infn.it:8888/ (be sure to start the latest version 'dodasts/cygno-lab:v1.0.12-cygno' some browser cache old relese)
+* to config once forever your condor eviroment **open a terminal** and edit your bashrc profile (where USERNAME is your username):
+
+![Logo](https://github.com/CYGNUS-RD/mycondor/blob/main/interface.png)
 
     vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
 
@@ -22,7 +25,7 @@ copy and paste the following lines:
     SCHEDD_HOST = 131.154.96.173.myip.cloud.infn.it
     EOF
 
-then (only first time afeter editing):
+then (only first time after editing):
 
     source /jupyter-workspace/cloud-storage/USERNAME/.bashrc
       
