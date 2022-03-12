@@ -3,8 +3,8 @@
 Submit jobs on CYGNO condor INFN Cloud queue
 
 there are two way to submit job under the experiment queue:
-1) acccess to cloud https://notebook.cygno.cloud.infn.it:8888/ open a terminal and follow the [istruction for Cygno Condor Cloud](https://github.com/CYGNUS-RD/mycondor#cygno-condor-cloud)
-2) download and install Docker for your platform [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an then follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
+* acccess to cloud https://notebook.cygno.cloud.infn.it:8888/ open a terminal and follow the [istruction for Cygno Condor Cloud](https://github.com/CYGNUS-RD/mycondor#cygno-condor-cloud)
+* download and install Docker for your platform (e.g. your leptop) [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an then follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
 
 ### Cygno Condor Cloud in your notebook (once forever)
 * connect to cygno cloud interface: https://notebook.cygno.cloud.infn.it:8888/ (login with your AAI credintial and be sure to start the latest version 'dodasts/cygno-lab:v1.0.12-cygno' some browser cache old release)
@@ -25,11 +25,11 @@ copy and paste the following lines:
     SCHEDD_HOST = 131.154.96.173.myip.cloud.infn.it
     EOF
 
-then (only first time after editing):
+save and exit (ESC: wq), and then (only first time after editing) give the command:
 
     source /jupyter-workspace/cloud-storage/USERNAME/.bashrc
       
-save and exit (ESC: wq), then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job). N.B. your profile .bashrc setup have to be recreated for any different container verision.
+follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job). N.B. Your '.bashrc' profile it's permanent and reload at any new connection and you can use to personalize your environments
 
 ### Cygno Condor Container (optional)
 download Cygno Condor Container configuration 
