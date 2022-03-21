@@ -90,5 +90,6 @@ to access and test your code, follow the istructions below for more detteils:
 
 ***Tip on containers***: you can exit when you like from the contaner and reconnect with ***docker exec -it mycondor_condor_1 /bin/bash*** command; to stop the container (you actually can have it running forever) give de command ***docker-compose down***; all the files are shared via the local foleder ***mycondor/submituser*** also if you are not connected to the container; if you can't access the queues try first to refresh the token via ***gettoken*** command
 
+file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
 
   
