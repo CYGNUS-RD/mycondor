@@ -8,29 +8,7 @@ there are two way to submit job under the experiment queue:
 
 ### Cygno Condor Cloud in your notebook (once forever)
 * connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it:8888/hub/login (login with your AAI credintial and be sure to start the latest version 'dodasts/cygno-lab:v1.0.12-cygno' some browser cache old release)
-* to config once forever your condor eviroment **open a terminal** and edit your bashrc profile (where USERNAME is your username):
-
-![Logo](https://github.com/CYGNUS-RD/mycondor/blob/main/interface.png)
-
-    vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
-
-copy and paste the following lines:
-
-    # confiig conndor CYGNO queue
-    cat > /etc/condor/condor_config.local << EOF 
-    AUTH_SSL_CLIENT_CAFILE = /etc/pki/ca-trust/source/anchors/htcondor_ca.crt
-    SCITOKENS_FILE = /tmp/token
-    SEC_DEFAULT_AUTHENTICATION_METHODS = SCITOKENS
-    COLLECTOR_HOST = 131.154.96.173.myip.cloud.infn.it:30618
-    SCHEDD_HOST = 131.154.96.173.myip.cloud.infn.it
-    EOF
-
-save and exit (ESC: wq), and then (only first time after editing) give the command:
-
-    source /jupyter-workspace/cloud-storage/USERNAME/.bashrc
-      
-follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job). N.B. Your '.bashrc' profile it's permanent and reload at any new connection and you can use to personalize your environments
-
+* to config once forever your condor eviroment **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
 ### Cygno Condor Container (optional)
 download Cygno Condor Container configuration 
 
