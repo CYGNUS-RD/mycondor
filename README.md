@@ -7,7 +7,7 @@ there are two way to submit job under the experiment queue:
 * download and install Docker for your platform (e.g. your leptop) [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. an then follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
 
 ### Cygno Condor Cloud in your notebook (once forever)
-* connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it:8888/hub/login (login with your AAI credintial and be sure to start the latest version 'dodasts/cygno-lab:v1.0.12-cygno' some browser cache old release)
+* connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it:8888/hub/login (login with your AAI credintial and be sure to start the latest version (> v1.0.12-cygno) some browser cache old release)
 * to config once forever your condor eviroment **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
 ### Cygno Condor Container (optional)
 download Cygno Condor Container configuration 
