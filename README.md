@@ -8,7 +8,7 @@ there are two way to submit job under the experiment queue:
 
 ### Cygno Condor Cloud in your notebook (once forever)
 * connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it:8888/hub/login (login with your AAI credintial and be sure to start the latest version (> v1.0.12-cygno) some browser cache old release)
-* to config once forever your condor eviroment **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job)
+* to config once forever your condor eviroment **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#submit-a-job)
 ### Cygno Condor Container (optional)
 download Cygno Condor Container configuration 
 
