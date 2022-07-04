@@ -39,7 +39,6 @@ ONLY on Container (not from netebook terminal) you need to get the tocken any ti
 follow the istrctions and press enter to any question (do not enter any password) 
       
 ### Submit a job 
-    
 check if all is right e.g. monotoring the condor queue status
 
       [root@5045c42ec547 /]# condor_status
