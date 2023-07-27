@@ -19,8 +19,8 @@ there are two way to submit job under the experiment queue:
   AUTH_SSL_CLIENT_CAFILE = /etc/pki/ca-trust/source/anchors/htcondor_ca.crt
   SCITOKENS_FILE = /tmp/token
   SEC_DEFAULT_AUTHENTICATION_METHODS = SCITOKENS
-  COLLECTOR_HOST = 131.154.96.115.myip.cloud.infn.it:30618
-  SCHEDD_HOST = 131.154.96.115.myip.cloud.infn.it
+  COLLECTOR_HOST = 131.154.96.142.myip.cloud.infn.it:30618
+  SCHEDD_HOST = 131.154.96.142.myip.cloud.infn.it
   EOF
   ```
   * cloese and re-open your terminal, now the queues are configured forver (this is valid for any cluster configured under condor)
