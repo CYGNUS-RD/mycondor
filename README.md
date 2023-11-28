@@ -19,13 +19,17 @@ there are two way to submit job under the experiment queue:
   AUTH_SSL_CLIENT_CAFILE = /etc/pki/ca-trust/source/anchors/htcondor_ca.crt
   SCITOKENS_FILE = /tmp/token
   SEC_DEFAULT_AUTHENTICATION_METHODS = SCITOKENS
-  COLLECTOR_HOST = 131.154.96.142.myip.cloud.infn.it:30618
-  SCHEDD_HOST = 131.154.96.142.myip.cloud.infn.it
+  COLLECTOR_HOST = 131.154.99.182.myip.cloud.infn.it:30618
+  SCHEDD_HOST = 131.154.99.182.myip.cloud.infn.it
   EOF
   ```
   * cloese and re-open your terminal, now the queues are configured forver (this is valid for any cluster configured under condor)
 
 * to submit your job **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#submit-a-job)
+
+- Queue 1 reserved to reco:  131.154.98.218
+- Queue 2 reserved to reco: 131.154.99.82
+- Queue Sym and public: 131.154.99.182
 
 ### Cygno Condor Container (optional)
 download Cygno Condor Container configuration 
