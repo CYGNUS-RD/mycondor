@@ -8,7 +8,7 @@ there are two way to submit job under the experiment queue:
 
 ### Cygno Condor Cloud in your notebook (once forever)
 * connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it:8888
-* if you are running a version < v17 open a terminal, edit your bash, (change the username!). From the v17 the queue are configured on CYGNO cluster by default
+* to sertup caondor access permanently plese setup (where USERNAME is your username)
   ```
   vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
   ```
@@ -27,7 +27,7 @@ there are two way to submit job under the experiment queue:
 
 * to submit your job **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#submit-a-job)
 
-- Queue 1 **reserved** to reco:  131.154.98.218
+- Queue 1 **reserved** to reco: 131.154.98.218
 - Queue 2 **reserved** to reco: 131.154.99.82
 - Queue Sym and public: 131.154.98.46
 
