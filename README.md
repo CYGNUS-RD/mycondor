@@ -27,8 +27,8 @@ there are two way to submit job under the experiment queue:
 
 * to submit your job **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#submit-a-job)
 
-- Queue 1 reserved to reco:  131.154.98.218
-- Queue 2 reserved to reco: 131.154.99.82
+- Queue 1 **reserved** to reco:  131.154.98.218
+- Queue 2 **reserved** to reco: 131.154.99.82
 - Queue Sym and public: 131.154.98.46
 
 ### Cygno Condor Container (optional)
