@@ -39,19 +39,10 @@ download Cygno Condor Container configuration
 
 in the directory ***private*** you will find example and there you have to copy/move your code to be submitted. The folder is shared with running container and continuosly updated
 
-run Cygno Condor Container (first time it take some time to download the container image)
-
-    docker-compose up -d
-      
-when up, connect via shell to the Cygno Condor Container 
-
-    docker exec -it <image name> /bin/bash
-     
-<image name>  is tipicaly *mycondor-condor-1* or *mycondor_condor_1* depending your system. you can always get the name of the immage by the command **docker ps**:
-                                                                                                   
-       mycondor mazzitel$ docker ps
-       CONTAINER ID   IMAGE                 COMMAND                  CREATED       STATUS       PORTS      NAMES
-       d872b92ee256   dodasts/mini-htc:v0   "/bin/sh -c '/start_…"   4 hours ago   Up 4 hours   9618/tcp   mycondor-condor-1 
+run Cygno Condor Container 
+```
+docker-compose up -d
+```      
       
 then follow the istraction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job) 
 ONLY on Container (not from netebook terminal) you need to get the tocken any time you need with the command **gettoken** to the prompt
