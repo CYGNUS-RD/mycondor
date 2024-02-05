@@ -22,6 +22,10 @@ there are two way to submit job under the experiment queue:
   COLLECTOR_HOST = 131.154.98.46.myip.cloud.infn.it:30618
   SCHEDD_HOST = 131.154.98.46.myip.cloud.infn.it
   EOF
+
+  alias condor_job_detail='condor_q -all -format "-----------------------------------------\n\nClusterID: %d\n" ClusterId -format "JobStatus: %d\n" JobStatus -format "CygnoUser: %s\n\n" CygnoUser'
+  
+  alias condor_my_jobs='condor_q -all -format "ClusterID: %d " ClusterId -format "JobStatus: %d " JobStatus -format "CygnoUser: %s\n" CygnoUser | grep $USERNAME' 
   ```
   * cloese and re-open your terminal, now the queues are configured forver (this is valid for any cluster configured under condor)
 
