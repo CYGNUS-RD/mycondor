@@ -94,7 +94,9 @@ file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transf
 * to go back to cloud queue (if you have configured as above) ```htc -c```
 * to monitor the queue ```htc -q``` (type ```htc``` for help)
 * if the queue lost configuration type again ```htc -t/-c```
-  
+![alt text](firstLogin.png "example of first login when crating tier1 queue")
+
+
 Recostruction submit example:
 * pull reconstraction repository
 * crate a ***sub_reco*** file like following:
