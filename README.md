@@ -87,14 +87,45 @@ to access and test your code, follow the instructions below for more details:
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
 
 ### Submit a job @ tier1
-"""
-condor_submit sub_test_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
-"""
-"""
+
+* since cygnolib **v1.0.18**, cygno_htc script to configure and monitor tier1/cloud has been included
+* since notebook **gmazzitelli/cygno-lab:v1.0.27-cygno** cli htc has been setup to handle queue at tier1 and on cloud
+* to configure the queue type ```htc -t```
+* to go back to cloud queue (if you have configured as above) ```htc -c```
+* to monitor the queue ```htc -q``` (type ```htc``` for help)
+* if the queue lost configuration type again ```htc -t/-c```
+  
+Recostruction submit example:
+* pull reconstraction repository
+* crate a ***sub_reco*** file like following:
+```
++SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
+Requirements = HasSingularity
+executable = /home/mazzitel/reconstruction/exec_reco.sh
+
+log    = reconstruction_77744.log
+output = reconstruction_77744.out
+error  = reconstruction_77744.error
+
+should_transfer_files   = YES
+
+transfer_input_files  = /home/mazzitel/reconstruction/index.php, /home/mazzitel/reconstruction/waveform.py, /home/mazzitel/reconstruction/ReadMe_PMT.md, /home/mazzitel/reconstruction/datasets, /home/mazzitel/reconstruction/.gitignore, /home/mazzitel/reconstruction/utilities.py, /home/mazzitel/reconstruction/cluster, /home/mazzitel/reconstruction/postprocessing, /home/mazzitel/reconstruction/submit_reco.py, /home/mazzitel/reconstruction/profiling.py, /home/mazzitel/reconstruction/energyCalibrator.py, /home/mazzitel/reconstruction/treeVars.py, /home/mazzitel/reconstruction/debug_code, /home/mazzitel/reconstruction/calibration.txt, /home/mazzitel/reconstruction/After_reco, /home/mazzitel/reconstruction/snakes.py, /home/mazzitel/reconstruction/configFile_MC.txt, /home/mazzitel/reconstruction/morphsnakes.py, /home/mazzitel/reconstruction/corrections, /home/mazzitel/reconstruction/cython_cygno.pyx, /home/mazzitel/reconstruction/cythonize.sh, /home/mazzitel/reconstruction/modules_config, /home/mazzitel/reconstruction/exec_reco.sh, /home/mazzitel/reconstruction/scripts, /home/mazzitel/reconstruction/plotter, /home/mazzitel/reconstruction/clusterTools.py, /home/mazzitel/reconstruction/pedestals, /home/mazzitel/reconstruction/reconstruction.py, /home/mazzitel/reconstruction/output.py, /home/mazzitel/reconstruction/cameraChannel.py, /home/mazzitel/reconstruction/data, /home/mazzitel/reconstruction/configFile_LNF.txt, /home/mazzitel/reconstruction/README.md, /home/mazzitel/reconstruction/configFile_MANGO.txt, /home/mazzitel/reconstruction/mva, /home/mazzitel/reconstruction/utils, /home/mazzitel/reconstruction/swiftlib.py, /home/mazzitel/reconstruction/configFile_LNGS.txt, /home/mazzitel/reconstruction/showOneImage.py, /home/mazzitel/reconstruction/rootlogon.C
+
+transfer_output_files = reco_run77744_3D.root, reco_run77744_3D.txt
+
+arguments             = configFile_LNGS.txt 77744 8 -1 96c209647473ef7273012cbbb2338266216c4123
+
+queue
+```
+submit 
+```
+condor_submit sub_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
+```
+```
 condor_q XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
 condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it 
-"""
-"""
+```
+```
 JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
-"""
+```
   
