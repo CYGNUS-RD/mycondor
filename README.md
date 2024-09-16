@@ -87,14 +87,14 @@ to access and test your code, follow the instructions below for more details:
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
 
 ### Submit a job @ tier1
-'''
+"""
 condor_submit sub_test_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
-'''
-'''
+"""
+"""
 condor_q XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
 condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it 
-'''
-'''
+"""
+"""
 JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
-'''
+"""
   
