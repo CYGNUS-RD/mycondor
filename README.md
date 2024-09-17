@@ -93,7 +93,7 @@ file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transf
 * to configure/reauthenticate the tier1 queue type ```htc -t```
 * to go back to cloud queue (if you have configured as above) ```htc -c```
 * to monitor the queue ```htc -q``` (type ```htc``` for help)
-* if the queue lost configuration type again ```htc -t/-c```
+* if the queue is lost, you can reconfigure simply typing again ```htc -t/-c``` (job are not lost)
 ![alt text](firstLogin.png "example of first login when crating tier1 authentication")
 
 
