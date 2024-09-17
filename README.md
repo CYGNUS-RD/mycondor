@@ -89,17 +89,20 @@ file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transf
 ### Submit a job @ tier1
 
 * since cygnolib **v1.0.18**, cygno_htc script to configure and monitor tier1/cloud has been included
-* since notebook **gmazzitelli/cygno-lab:v1.0.27-cygno** cli htc has been setup to handle queue at tier1 and on cloud
+* since notebook **gmazzitelli/cygno-lab:v1.0.27-cygno** cli htc has been set up to handle queue at tier1 and on cloud
 * to configure/reauthenticate the tier1 queue type ```htc -t```
 * to go back to cloud queue (if you have configured as above) ```htc -c```
 * to monitor the queue ```htc -q``` (type ```htc``` for help)
 * if the queue is lost, you can reconfigure simply typing again ```htc -t/-c``` (job are not lost)
-![alt text](firstLogin.png "example of first login when crating tier1 authentication")
+![alt text](firstLogin.png "example of first login when creating tier1 authentication")
 
 
-Recostruction submit example:
-* pull reconstraction repository
-* crate a ***sub_reco*** file like following:
+Reconstruction submit example:
+* Open jupyter notebook (e.g. [notebook01](https://notebook01.cygno.cloud.infn.it/));
+* Start the server using "Select your desired image: gmazzitelli/cygno-lab:v1.0.27-cygno";
+* Open the terminal on the notebook, type: ```htc -t``` and follow the instructions;
+* pull reconstruction repository
+* create a ***sub_reco*** file like following:
 ```
 +SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
 Requirements = HasSingularity
@@ -119,14 +122,18 @@ arguments             = configFile_LNGS.txt 77744 8 -1 96c209647473ef7273012cbbb
 
 queue
 ```
-submit 
+* and then use the command below to submit your job:
 ```
 condor_submit sub_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
 ```
+
+* You can check the job status and retrieve the job output using the following commands:
 ```
 condor_q XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
 condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it 
 ```
+
+* And here there is CLI prepared to try to retrieve the jobs output each minute:  
 ```
 JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
 ```
