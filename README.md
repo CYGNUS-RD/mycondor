@@ -90,11 +90,11 @@ file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transf
 
 * since cygnolib **v1.0.18**, cygno_htc script to configure and monitor tier1/cloud has been included
 * since notebook **gmazzitelli/cygno-lab:v1.0.27-cygno** cli htc has been setup to handle queue at tier1 and on cloud
-* to configure the queue type ```htc -t```
+* to configure/reauthenticate the tier1 queue type ```htc -t```
 * to go back to cloud queue (if you have configured as above) ```htc -c```
 * to monitor the queue ```htc -q``` (type ```htc``` for help)
 * if the queue lost configuration type again ```htc -t/-c```
-![alt text](firstLogin.png "example of first login when crating tier1 queue")
+![alt text](firstLogin.png "example of first login when crating tier1 authentication")
 
 
 Recostruction submit example:
