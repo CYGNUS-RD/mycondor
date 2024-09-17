@@ -48,7 +48,7 @@ run Cygno Condor Container
 docker-compose up -d
 ```      
       
-then follow the instruction below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job) 
+then follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job) 
 ONLY on Container (not from Notebook terminal) you need to get the token any time you need with the command **gettoken** to the prompt
 
       [root@5045c42ec547 /]# gettoken
@@ -107,7 +107,7 @@ Reconstruction submit example:
 #!/bin/bash
 python3 reconstruction.py $1 -r $2 -j $3 --max-entries $4 --git $5
 ```
-* create a ***sub_reco*** file, like following:
+* create a ***sub_reco*** file (outside the reconstruction folder), like following:
 ```
 +SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
 Requirements = HasSingularity
