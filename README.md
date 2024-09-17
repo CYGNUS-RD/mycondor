@@ -102,7 +102,12 @@ Reconstruction submit example:
 * Start the server using "Select your desired image: gmazzitelli/cygno-lab:v1.0.27-cygno";
 * Open the terminal on the notebook, type: ```htc -t``` and follow the instructions;
 * pull reconstruction repository
-* create a ***sub_reco*** file like following:
+* create a exec_reco.sh file inside the reconstruction folder, like the following:
+```
+#!/bin/bash
+python3 reconstruction.py $1 -r $2 -j $3 --max-entries $4 --git $5
+```
+* create a ***sub_reco*** file, like following:
 ```
 +SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
 Requirements = HasSingularity
@@ -120,6 +125,7 @@ transfer_output_files = reco_run77744_3D.root, reco_run77744_3D.txt
 
 arguments             = configFile_LNGS.txt 77744 8 -1 96c209647473ef7273012cbbb2338266216c4123
 
++CygnoUser = "$ENV(USERNAME)"
 queue
 ```
 * and then use the command below to submit your job:
