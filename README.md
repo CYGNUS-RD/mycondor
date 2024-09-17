@@ -29,11 +29,11 @@ there are two ways to submit a job under the experiment queue:
   ```
   * close and re-open your terminal, now the queues are configured forever (this is valid for any cluster configured under condor)
 
-* to submit your job **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#submit-a-job)
+* To submit your job **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#submit-a-job)
 
-- Queue 1 **reserved** to reco: 131.154.98.50
-- Queue 2 public:               131.154.98.168
-- Queue Sym and public:         131.154.98.46
+- Queue 1 **reserved** to reco: 131.154.98.50   ( 5 Machines: 8core/16Gb RAM)
+- Queue 2 public:               131.154.98.168  (10 Machines: 4core/ 8Gb RAM)
+- Queue Sym and public:         131.154.98.46   ( 4 Machines: 8core/16Gb RAM)
 
 ### Cygno Condor Container (optional)
 download Cygno Condor Container configuration 
