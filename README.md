@@ -94,8 +94,19 @@ file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transf
 * to go back to cloud queue (if you have configured as above) ```htc -c```
 * to monitor the queue ```htc -q``` (type ```htc``` for help)
 * if the queue is lost, you can reconfigure simply typing again ```htc -t/-c``` (job are not lost)
+
+  
 ![alt text](firstLogin.png "example of first login when creating tier1 authentication")
 
+```
+v1.0.27# htc --help
+Usage:
+  -t/-c --tier1/--cloud, configure/switch between htc@tier1 and htc@cloud
+  -s --submit, submit a job:  -s <subfilename> <ceid> [only for tier1 ceid=1-7 default ce02]
+  -f --tranfer, tranfer files: -f <jobid> <ceid> [only for tier1 ceid=1-7 default ce02]
+  -q --monitor, monitor jobs: -q <ceid> [only for tier1 ceid=1-7 default ce02]
+  -h --help, show this help
+```
 
 Reconstruction submit example:
 * Open jupyter notebook (e.g. [notebook01](https://notebook01.cygno.cloud.infn.it/));
