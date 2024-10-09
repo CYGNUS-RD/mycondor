@@ -118,7 +118,7 @@ Reconstruction submit example:
 #!/bin/bash
 python3 reconstruction.py $1 -r $2 -j $3 --max-entries $4 --git $5
 ```
-* create a ***sub_reco*** file (outside the reconstruction folder), like following (log/out/error file could not save in your folder, copy eventually it if you need after data tranfer):
+* create a ***sub_reco*** file (outside the reconstruction folder), like following:
 ```
 +SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
 Requirements = HasSingularity
