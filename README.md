@@ -106,7 +106,7 @@ Total for query: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 su
 Total for all users: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 suspended
 
 ```
-Now you are up and running. On in the notebook/container move in the direcrory with your code. The **/home/submituser/** is a permanent directory to share data/code on the container my condor with you hosting srver
+Now you are up and running. On in the notebook/container move in the direcrory with your code. if you are using the container the **/home/submituser/** is a permanent directory to share data/code  with you hosting server
 
 to access and test your code, follow the instructions below for more details: 
 
