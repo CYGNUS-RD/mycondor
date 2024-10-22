@@ -5,7 +5,7 @@ HOWTO submit jobs on CYGNO condor **INFN Cloud** or **TIER1@CANF** queues
 you can access the experiment queues:
 * via notebook https://notebook.cygno.cloud.infn.it/  
 * via [docker](https://docs.docker.com/get-docker/) with this [mycondor](https://github.com/CYGNUS-RD/mycondor) docker software
-* via tier1 user interface ([TIER1 queue only](https://confluence.infn.it/display/TD/9+-+Job+submission))
+* via TIER1 user interface ([TIER1 queue only](https://confluence.infn.it/display/TD/9+-+Job+submission))
 
 
 ### submit jobs to INFN Cloud queues or TIER1@CNAF queues via notebook (raccomanded)
@@ -158,8 +158,15 @@ htc -q (all jobs)
 htc -m (my jobs)
 htc -j (all CYGNO user)
 ```
-
-more info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
+to tranfer file
+```
+htc -f <jobid> <ceid>
+```
+to remove the job
+```
+htc -r <jobid> <ceid>
+```
+more dettailed info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
 
 raw commands
 ```
