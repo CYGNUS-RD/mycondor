@@ -15,7 +15,7 @@ you can access the experiment queues:
 * optional, configure your [preferd queue ip](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#personaliaze-your-default-queue-in-infn-cloud)
 
 ### mycondor container (optional)
-* requirements: [docker](https://docs.docker.com/get-docker/)
+* requirements: [docker](https://docs.docker.com/get-docker/) platform
 * clone [mycondor]([mycondor](https://github.com/CYGNUS-RD/mycondor))
 ```
 git clone https://github.com/CYGNUS-RD/mycondor.git
@@ -26,13 +26,13 @@ cd mycondor/
 docker-compose up -d
 docker exec -ti mycondor /bin/bash
 ```      
-* use **htc** command to access TIER1/CLOUD queue
+* use **htc** command line to access TIER1/CLOUD queue
 * the **/home/submituser/** folder is shared with your computer facility where the docker is running
 
-### htc cli
+### htc command line 
 
-* since cygnolib **v1.0.18**, cygno_htc script to configure and monitor tier1/cloud has been included
-* since notebook **gmazzitelli/cygno-lab:v1.0.27-cygno** cli htc has been set up to handle queue at tier1 and on cloud
+* since cygnolib **v1.0.18**, cygno_htc script to configure and monitor TIER1/cloud has been included
+* since notebook **version >= v1.0.27** the cli htc has been set up to handle queue at TIER1 and on cloud
 * ```htc -t``` to configure/reauthenticate the TIER1 queues (reautentication is needed when you restart notebook/docker)
 * ```htc -c``` to configure/reauthenticate @ the INFN cloud queue (reautentication is needed when you restart the docker container,) 
 * to monitor the queue ```htc -q``` (type ```htc``` for help)
