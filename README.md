@@ -1,92 +1,69 @@
-# CYGNO Condor Queue
+# CYGNO HTCondor Queue
 
-Submit jobs on CYGNO condor INFN Cloud queue
+HOWTO submit jobs on CYGNO condor **INFN Cloud** or **TIER1@CANF** queues
 
-there are two ways to submit a job under the experiment queue:
-* access to cloud https://notebook.cygno.cloud.infn.it/ Open a terminal and follow the [instructions for Cygno Condor Cloud](https://github.com/CYGNUS-RD/mycondor#cygno-condor-cloud)
-* Download and install Docker for your platform (e.g. your laptop) [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) and use Cygno Condor Container from your PC or server, etc. and then follow the [istruction for Cygno Condor Container](https://github.com/CYGNUS-RD/mycondor#cygno-condor-container)
+you can access the experiment queue:
+* via notebook https://notebook.cygno.cloud.infn.it/  
+* via [docker](https://docs.docker.com/get-docker/) with this [mycondor](https://github.com/CYGNUS-RD/mycondor) docker software
+* via tier1 user interface ([TIER1 queue only](https://confluence.infn.it/display/TD/9+-+Job+submission))
 
-### Cygno Condor Cloud in your notebook (once forever)
+
+### submit jobs to INFN Cloud queues or TIER1@CNAF queues via notebook (raccomanded)
+* requirments: web browser and access to INFN cloud (see [howto](https://github.com/CYGNUS-RD/cygno/blob/main/infrastructure.md#signup-on-computing-ressources-needed-for-all-resources-cloud-lngs-lnf))
 * connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it
-* to setup condor access permanently please set (where USERNAME is your username)
-  ```
-  vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
-  ```
-  * put this code in your bash file
-  ```
-  # config condor CYGNO queue
-  cat > /etc/condor/condor_config.local << EOF 
-  AUTH_SSL_CLIENT_CAFILE = /etc/pki/ca-trust/source/anchors/htcondor_ca.crt
-  SCITOKENS_FILE = /tmp/token
-  SEC_DEFAULT_AUTHENTICATION_METHODS = SCITOKENS
-  COLLECTOR_HOST = 131.154.98.46.myip.cloud.infn.it:30618
-  SCHEDD_HOST = 131.154.98.46.myip.cloud.infn.it
-  EOF
-
-  alias condor_job_detail='condor_q -all -format "-----------------------------------------\n\nClusterID: %d\n" ClusterId -format "JobStatus: %d\n" JobStatus -format "CygnoUser: %s\n\n" CygnoUser'
-  
-  alias condor_my_jobs='condor_q -all -format "ClusterID: %d " ClusterId -format "JobStatus: %d " JobStatus -format "CygnoUser: %s\n" CygnoUser | grep $USERNAME' 
-  ```
-  * close and re-open your terminal, now the queues are configured forever (this is valid for any cluster configured under condor)
-
-* To submit your job **open a terminal** and follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#submit-a-job)
-
-- Queue 1 **reserved** to reco: 131.154.98.50   ( 5 Machines: 8core/16Gb RAM)
-- Queue 2 public:               131.154.98.168  (10 Machines: 4core/ 8Gb RAM)
-- Queue Sym and public:         131.154.98.46   ( 4 Machines: 8core/16Gb RAM)
+* open a terminal and use the commanad **htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor/edit/main/README.md#htc-cli)
+* optional, configure your [preferd queue ip](https://github.com/CYGNUS-RD/mycondor/edit/main/README.md#personaliaze-your-default-queue-in-infn-cloud)
 
 ### Cygno Condor Container (optional)
-download Cygno Condor Container configuration 
-
-    git clone https://github.com/CYGNUS-RD/mycondor.git
-    cd mycondor/
-
-in the directory ***private*** you will find an example and there you have to copy/move your code to be submitted. The folder is shared with the running container and continuously updated
-
-run Cygno Condor Container 
+* requirements: [docker](https://docs.docker.com/get-docker/)
+* clone [mycondor]([mycondor](https://github.com/CYGNUS-RD/mycondor))
+```
+git clone https://github.com/CYGNUS-RD/mycondor.git
+cd mycondor/
+```
+* run and access the container
 ```
 docker-compose up -d
+docker exec -ti mycondor /bin/bash
 ```      
-      
-then follow the instructions below to [submit a job](https://github.com/CYGNUS-RD/mycondor/#submit-a-job) 
-ONLY on Container (not from Notebook terminal) you need to get the token any time you need with the command **gettoken** to the prompt
-
-      [root@5045c42ec547 /]# gettoken
-    
-follow the instructions and press enter to any question (do not enter any password) 
+* use **htc** command to access TIER1/CLOUD queue
       
 ### Submit a job 
 check if all is right e.g. monitoring the condor queue status
 
-      [root@5045c42ec547 /]# condor_status
-      Name                    OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
+```
+HTCONDOR:/home/submituser> htc -q
+htc@cloud
 
-      wn-pod-7b4747c8cd-bq9d5 LINUX      X86_64 Unclaimed Idle      0.000 7959  8+01:45:21
-      wn-pod-7b4747c8cd-ljslg LINUX      X86_64 Unclaimed Idle      0.000 7959  2+00:21:34
-      wn-pod-7b4747c8cd-r52dg LINUX      X86_64 Unclaimed Idle      0.000 7959  8+01:35:19
-      wn-pod-7b4747c8cd-sfqh7 LINUX      X86_64 Unclaimed Idle      0.000 7959  8+01:35:21
-      wn-pod-7b4747c8cd-sksm4 LINUX      X86_64 Unclaimed Idle      0.000 7959  8+01:25:06
 
-                     Machines Owner Claimed Unclaimed Matched Preempting  Drain
+-- Schedd: 131.154.98.46.myip.cloud.infn.it : <131.154.98.46:31618?... @ 10/22/24 16:46:39
+OWNER  BATCH_NAME    SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
+condor ID: 20433   10/8  11:09      _      _      _      1      1 20433.0
+condor ID: 20473   10/18 14:48      _      _      _      _      1 20473.0
+condor ID: 20615   10/21 17:18      _      _      _      _      1 20615.0
+condor ID: 20641   10/22 14:12      _      _      _      _      1 20641.0
+condor ID: 20642   10/22 14:13      _      _      _      _      1 20642.0
+condor ID: 20643   10/22 14:13      _      _      _      _      1 20643.0
+condor ID: 20644   10/22 14:14      _      _      _      _      1 20644.0
+condor ID: 20645   10/22 14:14      _      _      _      _      1 20645.0
 
-        X86_64/LINUX        5     0       0         5       0          0      0
+Total for query: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 suspended 
+Total for all users: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 suspended
 
-               Total        5     0       0         5       0          0      0
+```
 
-Now you are up and running. On in the container shell you can change the directory to the shared folder with your PC where you can put your software. On the cloud you have to change the directory and upload via web interface your software/directory with your code. The **private** is a permanent directory.
-
-      cd private/
-
+Now you are up and running. On in the container shell you can change the directory to the shared folder with your PC where you can put your software. On the cloud you have to change the directory and upload via web interface your software/directory with your code. The **submituser** is a permanent directory.
+```
+      cd submituser/
+```
 to access and test your code, follow the instructions below for more details: 
 
 * condor@INFN [https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job](https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job)
 * file IO [https://codimd.infn.it/s/pbisNdDlN](https://codimd.infn.it/s/pbisNdDlN) [esempio](https://github.com/CYGNUS-RD/cygno/blob/main/dev/presigned.py)
 
-***Tip on containers***: you can exit when you like from the container and reconnect with ***docker exec -it mycondor_condor_1 /bin/bash*** command; to stop the container (you actually can have it running forever) give the command ***docker-compose down***; all the files are shared via the local folder ***mycondor/submituser*** also if you are not connected to the container; if you can't access the queues try first to refresh the token via ***gettoken*** command
-
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
 
-### Submit a job @ tier1
+### htc cli
 
 * since cygnolib **v1.0.18**, cygno_htc script to configure and monitor tier1/cloud has been included
 * since notebook **gmazzitelli/cygno-lab:v1.0.27-cygno** cli htc has been set up to handle queue at tier1 and on cloud
@@ -106,6 +83,8 @@ Usage:
   -f --tranfer, tranfer files: -f <jobid> <ceid> [only for tier1 ceid=1-7 default ce02]
   -r --remove, remove jobs: -r <jobid> <ceid> [only for tier1 ceid=1-7 default ce02]
   -q --monitor, monitor jobs: -q <ceid> [only for tier1 ceid=1-7 default ce02]
+  -m --myjobs, monitor my jobs (mazzitel@mycondor): -m <ceid> [only for tier1 ceid=1-7 default ce02]
+  -j --jobs, monitor all jobs: -j <ceid> [only for tier1 ceid=1-7 default ce02]
   -h --help, show this help
 ```
 
@@ -157,3 +136,32 @@ condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.
 JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
 ```
 more info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
+
+### personaliaze your default queue in INFN cloud
+* check the default setup in condor file /etc/condor/condor_config.local
+* if you prefer to change it with differe queue ip (see below), you can setup yuor bash file, e.g.:
+  ```
+  vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
+  ```
+* put the following code in your bash file to setup queue 131.154.98.46 (the example is for the simulation 131.154.98.46)
+  ```
+  # config condor CYGNO queue
+  cat > /etc/condor/condor_config.local << EOF 
+  AUTH_SSL_CLIENT_CAFILE = /etc/pki/ca-trust/source/anchors/htcondor_ca.crt
+  SCITOKENS_FILE = /tmp/token
+  SEC_DEFAULT_AUTHENTICATION_METHODS = SCITOKENS
+  COLLECTOR_HOST = 131.154.98.46.myip.cloud.infn.it:30618
+  SCHEDD_HOST = 131.154.98.46.myip.cloud.infn.it
+  EOF
+
+  alias condor_job_detail='condor_q -all -format "-----------------------------------------\n\nClusterID: %d\n" ClusterId -format "JobStatus: %d\n" JobStatus -format "CygnoUser: %s\n\n" CygnoUser'
+  
+  alias condor_my_jobs='condor_q -all -format "ClusterID: %d " ClusterId -format "JobStatus: %d " JobStatus -format "CygnoUser: %s\n" CygnoUser | grep $USERNAME' 
+  ```
+* close and re-open your terminal, now the queues are configured forever (this is valid for any cluster configured under condor)
+
+- Queue 1 **reserved** to reco: 131.154.98.50   ( 5 Machines: 8core/16Gb RAM)
+- Queue 2 public:               131.154.98.168  (10 Machines: 4core/ 8Gb RAM)
+- Queue Sym and public:         131.154.98.46   ( 4 Machines: 8core/16Gb RAM)
+
+use **htc** command to access TIER1/CLOUD queue
