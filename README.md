@@ -83,6 +83,8 @@ Total for all users: 6202 jobs; 2341 completed, 0 removed, 393 idle, 3463 runnin
 see help ```htc -h``` for full command available. 
 
 ### Submit a job 
+
+**general setup:**
 check if all is right e.g. monitoring the condor queue status, e.g.
 ```
 HTCONDOR:/home/submituser> htc -q
@@ -104,17 +106,19 @@ Total for query: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 su
 Total for all users: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 suspended
 
 ```
-Now you are up and running. On in the notebook/container move in the direcrory with your code. The **/home/submituser/** is a permanent directory to share data/code with 
+Now you are up and running. On in the notebook/container move in the direcrory with your code. The **/home/submituser/** is a permanent directory to share data/code on the container my condor with you hosting srver
+
 to access and test your code, follow the instructions below for more details: 
 
 * condor@INFN [https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job](https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job)
 * file IO [https://codimd.infn.it/s/pbisNdDlN](https://codimd.infn.it/s/pbisNdDlN) [esempio](https://github.com/CYGNUS-RD/cygno/blob/main/dev/presigned.py)
+* in the [folder](https://github.com/CYGNUS-RD/mycondor/tree/main/submituser) there are some exaple of code and submit files
 
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
 
-Reconstruction submit example :
-* Open jupyter notebook (e.g. [notebook01](https://notebook01.cygno.cloud.infn.it/));
-* Start the server using "Select your desired image: gmazzitelli/cygno-lab:v1.0.27-cygno";
+**CYGNO reconstruction submit example on TIER1@CANF with sigularity**
+* Open jupyter notebook/mycondor;
+* Start your server (version >=1.0.27);
 * Open the terminal on the notebook, type: ```htc -t``` and follow the instructions;
 * pull reconstruction repository
 * create a exec_reco.sh file inside the reconstruction folder, like the following:
@@ -146,97 +150,26 @@ queue
 ```
 * and then use the command below to submit your job:
 ```
-condor_submit sub_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
+htc -s sub_reco
 ```
-
 * You can check the job status and retrieve the job output using the following commands:
 ```
-condor_q XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
-condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it 
+htc -q (all jobs)
+htc -m (my jobs)
+htc -j (all CYGNO user)
 ```
 
-* And here there is CLI prepared to try to retrieve the jobs output each minute:  
-```
-JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
-```
 more info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
-      
 
-
-### htc cli
-
-* since cygnolib **v1.0.18**, cygno_htc script to configure and monitor tier1/cloud has been included
-* since notebook **gmazzitelli/cygno-lab:v1.0.27-cygno** cli htc has been set up to handle queue at tier1 and on cloud
-* to configure/reauthenticate the tier1 queue type ```htc -t```
-* to go back to cloud queue (if you have configured as above) ```htc -c```
-* to monitor the queue ```htc -q``` (type ```htc``` for help)
-* if the queue is lost, you can reconfigure simply typing again ```htc -t/-c``` (job are not lost)
-
-  
-![alt text](firstLogin.png "example of first login when creating tier1 authentication")
-
-```
-v1.0.27# htc --help
-Usage:
-  -t/-c --tier1/--cloud, configure/switch between htc@tier1 and htc@cloud
-  -s --submit, submit a job:  -s <subfilename> <ceid> [only for tier1 ceid=1-7 default ce02]
-  -f --tranfer, tranfer files: -f <jobid> <ceid> [only for tier1 ceid=1-7 default ce02]
-  -r --remove, remove jobs: -r <jobid> <ceid> [only for tier1 ceid=1-7 default ce02]
-  -q --monitor, monitor jobs: -q <ceid> [only for tier1 ceid=1-7 default ce02]
-  -m --myjobs, monitor my jobs (mazzitel@mycondor): -m <ceid> [only for tier1 ceid=1-7 default ce02]
-  -j --jobs, monitor all jobs: -j <ceid> [only for tier1 ceid=1-7 default ce02]
-  -h --help, show this help
-```
-
-Reconstruction submit example:
-* Open jupyter notebook (e.g. [notebook01](https://notebook01.cygno.cloud.infn.it/));
-* Start the server using "Select your desired image: gmazzitelli/cygno-lab:v1.0.27-cygno";
-* Open the terminal on the notebook, type: ```htc -t``` and follow the instructions;
-* pull reconstruction repository
-* create a exec_reco.sh file inside the reconstruction folder, like the following:
-```
-#!/bin/bash
-python3 reconstruction.py $1 -r $2 -j $3 --max-entries $4 --git $5
-```
-* create a ***sub_reco*** file (outside the reconstruction folder), like following:
-```
-+SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
-Requirements = HasSingularity
-request_cpus = 8
-
-executable = /home/mazzitel/reconstruction/exec_reco.sh
-
-log    = reconstruction_77744.log
-output = reconstruction_77744.out
-error  = reconstruction_77744.error
-should_transfer_files   = YES
-
-transfer_input_files  = /home/mazzitel/reconstruction/index.php, /home/mazzitel/reconstruction/waveform.py, /home/mazzitel/reconstruction/ReadMe_PMT.md, /home/mazzitel/reconstruction/datasets, /home/mazzitel/reconstruction/.gitignore, /home/mazzitel/reconstruction/utilities.py, /home/mazzitel/reconstruction/cluster, /home/mazzitel/reconstruction/postprocessing, /home/mazzitel/reconstruction/submit_reco.py, /home/mazzitel/reconstruction/profiling.py, /home/mazzitel/reconstruction/energyCalibrator.py, /home/mazzitel/reconstruction/treeVars.py, /home/mazzitel/reconstruction/debug_code, /home/mazzitel/reconstruction/calibration.txt, /home/mazzitel/reconstruction/After_reco, /home/mazzitel/reconstruction/snakes.py, /home/mazzitel/reconstruction/configFile_MC.txt, /home/mazzitel/reconstruction/morphsnakes.py, /home/mazzitel/reconstruction/corrections, /home/mazzitel/reconstruction/cython_cygno.pyx, /home/mazzitel/reconstruction/cythonize.sh, /home/mazzitel/reconstruction/modules_config, /home/mazzitel/reconstruction/exec_reco.sh, /home/mazzitel/reconstruction/scripts, /home/mazzitel/reconstruction/plotter, /home/mazzitel/reconstruction/clusterTools.py, /home/mazzitel/reconstruction/pedestals, /home/mazzitel/reconstruction/reconstruction.py, /home/mazzitel/reconstruction/output.py, /home/mazzitel/reconstruction/cameraChannel.py, /home/mazzitel/reconstruction/data, /home/mazzitel/reconstruction/configFile_LNF.txt, /home/mazzitel/reconstruction/README.md, /home/mazzitel/reconstruction/configFile_MANGO.txt, /home/mazzitel/reconstruction/mva, /home/mazzitel/reconstruction/utils, /home/mazzitel/reconstruction/swiftlib.py, /home/mazzitel/reconstruction/configFile_LNGS.txt, /home/mazzitel/reconstruction/showOneImage.py, /home/mazzitel/reconstruction/rootlogon.C
-
-transfer_output_files = reco_run77744_3D.root, reco_run77744_3D.txt
-
-arguments             = configFile_LNGS.txt 77744 8 -1 96c209647473ef7273012cbbb2338266216c4123
-
-+CygnoUser = "$ENV(USERNAME)"
-queue
-```
-* and then use the command below to submit your job:
+raw commands
 ```
 condor_submit sub_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
-```
 
-* You can check the job status and retrieve the job output using the following commands:
-```
 condor_q XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
 condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it 
-```
 
-* And here there is CLI prepared to try to retrieve the jobs output each minute:  
-```
 JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
 ```
-more info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
-
 ### personaliaze your default queue in INFN cloud
 * check the default setup in condor file /etc/condor/condor_config.local
 * if you prefer to change it with differe queue ip (see below), you can setup yuor bash file, e.g.:
