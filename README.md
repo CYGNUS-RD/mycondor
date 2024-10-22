@@ -104,6 +104,7 @@ Usage:
   -t/-c --tier1/--cloud, configure/switch between htc@tier1 and htc@cloud
   -s --submit, submit a job:  -s <subfilename> <ceid> [only for tier1 ceid=1-7 default ce02]
   -f --tranfer, tranfer files: -f <jobid> <ceid> [only for tier1 ceid=1-7 default ce02]
+  -r --remove, remove jobs: -r <jobid> <ceid> [only for tier1 ceid=1-7 default ce02]
   -q --monitor, monitor jobs: -q <ceid> [only for tier1 ceid=1-7 default ce02]
   -h --help, show this help
 ```
