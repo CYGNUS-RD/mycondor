@@ -48,7 +48,7 @@ Usage:
   -j --jobs, monitor all jobs: -j <ceid> [only for tier1 ceid=1-7 default ce02]
   -h --help, show this help
 ```
-* if the queue is lost, you can reconfigure simply typing again ```htc -t/-c``` (job are not lost)
+* if the queue is lost, you can reconfigure simply typing again ```htc -t/``` or ```htc -c``` (job are not lost)
 
 ![alt text](firstLogin.png "example of first login when creating tier1 authentication")
 
@@ -108,7 +108,7 @@ Total for all users: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 
 ```
 Now you are up and running. On in the notebook/container move in the direcrory with your code. if you are using the container the **/home/submituser/** is a permanent directory to share data/code  with you hosting server
 
-to access and test your code, follow the instructions below for more details: 
+to submit your code, follow the instructions below for more details: 
 
 * condor@INFN [https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job](https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job)
 * file IO [https://codimd.infn.it/s/pbisNdDlN](https://codimd.infn.it/s/pbisNdDlN) [esempio](https://github.com/CYGNUS-RD/cygno/blob/main/dev/presigned.py)
