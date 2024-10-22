@@ -1,0 +1,17 @@
++SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
+Requirements = HasSingularity
+
+executable = test_mc.py
+
+log    = test_mc.log
+output = test_mc.out
+error  = test_mc.error
+
+
+should_transfer_files   = YES
+# transfer_input_files  = ...
+transfer_output_files = sim.csv
+# arguments             = ...
+
++CygnoUser = "$ENV(USERNAME)"
+queue

@@ -1,0 +1,9 @@
+universe   = vanilla
+executable = test_mc.py
+log        = test_mc.log
+output     = test_mc.out
+error      = test_mc.error
+transfer_output_files = sim.csv
++OWNER = "condor"
++CygnoUser = "$ENV(USERNAME)"
+queue
