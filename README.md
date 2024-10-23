@@ -108,13 +108,42 @@ Total for all users: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 
 ```
 Now you are up and running. On in the notebook/container move in the direcrory with your code. if you are using the container the **/home/submituser/** is a permanent directory to share data/code  with you hosting server
 
-to submit your code, follow the instructions below for more details: 
+to submit your code, crate a **subfile** following the instructions: 
 
 * condor@INFN [https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job](https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job)
 * file IO [https://codimd.infn.it/s/pbisNdDlN](https://codimd.infn.it/s/pbisNdDlN) [esempio](https://github.com/CYGNUS-RD/cygno/blob/main/dev/presigned.py)
 * in the [folder](https://github.com/CYGNUS-RD/mycondor/tree/main/submituser) there are some exaple of code and submit files
 
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
+* and then use the command below to submit your job:
+```
+htc -s <subfile>
+```
+* You can check the job status and retrieve the job output using the following commands:
+```
+htc -q (all jobs)
+htc -m (my jobs)
+htc -j (all CYGNO user)
+```
+to tranfer file
+```
+htc -f <jobid> <ceid>
+```
+to remove the job
+```
+htc -r <jobid> <ceid>
+```
+more dettailed info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
+
+some helpfull raw commands:
+```
+condor_submit sub_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
+
+condor_q XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
+condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it 
+
+JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
+```
 
 **CYGNO reconstruction submit example on TIER1@CANF with sigularity**
 * Open jupyter notebook/mycondor;
@@ -152,31 +181,7 @@ queue
 ```
 htc -s sub_reco
 ```
-* You can check the job status and retrieve the job output using the following commands:
-```
-htc -q (all jobs)
-htc -m (my jobs)
-htc -j (all CYGNO user)
-```
-to tranfer file
-```
-htc -f <jobid> <ceid>
-```
-to remove the job
-```
-htc -r <jobid> <ceid>
-```
-more dettailed info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
 
-raw commands
-```
-condor_submit sub_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
-
-condor_q XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
-condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it 
-
-JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
-```
 ### personaliaze your default queue @ INFN cloud
 * check the default setup in condor file /etc/condor/condor_config.local
 * if you prefer to change it with differe queue ip (see below), you can setup yuor bash file, e.g.:
