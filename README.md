@@ -11,7 +11,7 @@ you can access the experiment queues:
 ### submit jobs to INFN Cloud queues or TIER1@CNAF queues via notebook (raccomanded)
 * requirments: web browser and access to INFN cloud (see [howto](https://github.com/CYGNUS-RD/cygno/blob/main/infrastructure.md#signup-on-computing-ressources-needed-for-all-resources-cloud-lngs-lnf))
 * connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it
-* open a terminal and use the commanad **htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor/edit/main/README.md#htc-cli)
+* open a terminal and use the commanad **htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor?tab=readme-ov-file#htc-command-line)
 * optional, configure your [preferd queue ip](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#personaliaze-your-default-queue-in-infn-cloud)
 
 ### mycondor container (optional)
