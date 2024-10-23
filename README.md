@@ -12,7 +12,7 @@ you can access the experiment queues:
 * requirments: web browser and access to INFN cloud (see [howto](https://github.com/CYGNUS-RD/cygno/blob/main/infrastructure.md#signup-on-computing-ressources-needed-for-all-resources-cloud-lngs-lnf))
 * connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it
 * open a terminal and use the commanad **htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor?tab=readme-ov-file#htc-command-line)
-* optional, configure your [preferd queue ip](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#personaliaze-your-default-queue-in-infn-cloud)
+* optional, configure your [preferd queue ip](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#personaliaze-your-default-queue--infn-cloud)
 
 ### mycondor container (optional)
 * requirements: [docker](https://docs.docker.com/get-docker/) platform
