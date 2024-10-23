@@ -177,7 +177,7 @@ condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.
 
 JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
 ```
-### personaliaze your default queue in INFN cloud
+### personaliaze your default queue @ INFN cloud
 * check the default setup in condor file /etc/condor/condor_config.local
 * if you prefer to change it with differe queue ip (see below), you can setup yuor bash file, e.g.:
   ```
