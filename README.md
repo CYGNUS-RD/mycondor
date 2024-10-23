@@ -115,11 +115,11 @@ to submit your code, crate a **subfile** following the instructions:
 * in the [folder](https://github.com/CYGNUS-RD/mycondor/tree/main/submituser) there are some exaple of code and submit files
 
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
-* and then use the command below to submit your job:
+* use the command below to submit your job:
 ```
 htc -s <subfile>
 ```
-* You can check the job status and retrieve the job output using the following commands:
+* heck the job status and retrieve the job output using the following commands:
 ```
 htc -q (all jobs)
 htc -m (my jobs)
