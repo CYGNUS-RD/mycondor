@@ -8,14 +8,14 @@ you can access the experiment queues:
 * via TIER1 user interface ([TIER1 queue only](https://confluence.infn.it/display/TD/9+-+Job+submission))
 
 
-### submit jobs to INFN Cloud queues or TIER1@CNAF queues via notebook (raccomanded)
-* requirments: web browser and access to INFN cloud (see [howto](https://github.com/CYGNUS-RD/cygno/blob/main/infrastructure.md#signup-on-computing-ressources-needed-for-all-resources-cloud-lngs-lnf))
-* connect to cygno cloud interface:  https://notebook.cygno.cloud.infn.it
-* open a terminal and use the commanad **htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor?tab=readme-ov-file#htc-command-line)
-* optional, configure your [preferd queue ip](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#personaliaze-your-default-queue--infn-cloud)
+### Submit jobs to INFN Cloud queues or TIER1@CNAF queues via notebook (recommended)
+* requirements: web browser and access to INFN cloud (see [howto](https://github.com/CYGNUS-RD/cygno/blob/main/infrastructure.md#signup-on-computing-ressources-needed-for-all-resources-cloud-lngs-lnf))
+* connect to Cygno cloud interface:  https://notebook.cygno.cloud.infn.it
+* open a terminal and use the command **htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor?tab=readme-ov-file#htc-command-line)
+* optional, configure your [preferred queue ip](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#personaliaze-your-default-queue--infn-cloud)
 
 ### mycondor container (optional)
-* requirements: [docker](https://docs.docker.com/get-docker/) platform
+* Requirements: [docker](https://docs.docker.com/get-docker/) platform
 * clone [mycondor]([mycondor](https://github.com/CYGNUS-RD/mycondor))
 ```
 git clone https://github.com/CYGNUS-RD/mycondor.git
@@ -27,14 +27,14 @@ docker-compose up -d
 docker exec -ti mycondor /bin/bash
 ```      
 * use **htc** command line to access TIER1/CLOUD queue
-* the **/home/submituser/** folder is shared with your computer facility where the docker is running
+* The **/home/submituser/** folder is shared with your computer facility where the docker is running
 
 ### htc command line 
 
 * since cygnolib **v1.0.18**, cygno_htc script to configure and monitor TIER1/cloud has been included
 * since notebook **version >= v1.0.27** the cli htc has been set up to handle queue at TIER1 and on cloud
-* ```htc -t``` to configure/reauthenticate the TIER1 queues (reautentication is needed when you restart notebook/docker)
-* ```htc -c``` to configure/reauthenticate @ the INFN cloud queue (reautentication is needed when you restart the docker container,) 
+* ```htc -t``` to configure/reauthenticate the TIER1 queues (reauthentication is needed when you restart notebook/docker)
+* ```htc -c``` to configure/reauthenticate @ the INFN cloud queue (reauthentication is needed when you restart the docker container,) 
 * to monitor the queue ```htc -q``` (type ```htc``` for help)
 ```
 v1.0.27# htc --help
@@ -48,11 +48,11 @@ Usage:
   -j --jobs, monitor all jobs: -j <ceid> [only for tier1 ceid=1-7 default ce02]
   -h --help, show this help
 ```
-* if the queue is lost, you can reconfigure simply typing again ```htc -t/``` or ```htc -c``` (job are not lost)
+* if the queue is lost, you can reconfigure simply by typing again ```htc -t/``` or ```htc -c``` (job are not lost)
 
 ![alt text](firstLogin.png "example of first login when creating tier1 authentication")
 
-after autentication check the queue status just typing ```htc -q```:
+after authentication check the queue status by typing ```htc -q```:
 ```
 HTCONDOR:/home/submituser> htc -q
 htc@tier1
@@ -66,7 +66,7 @@ Total for query: 1 jobs; 1 completed, 0 removed, 0 idle, 0 running, 0 held, 0 su
 Total for cygno002: 1 jobs; 1 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended 
 Total for all users: 6091 jobs; 2307 completed, 0 removed, 264 idle, 3518 running, 2 held, 0 suspended
 ```
-the resorce at TIER1@CANF are acessible via 7 CE that can be specified adding the CE number to the **htc** commnad line e.g. ```htc -q 5```
+the resources at TIER1@CANF are accessible via 7 CE that can be specified by adding the CE number to the **htc** command line e.g. ```htc -q 5```
 ```
 HTCONDOR:/home/submituser> htc -q 5
 htc@tier1
@@ -84,7 +84,7 @@ see help ```htc -h``` for full command available.
 
 ### Submit a job 
 
-**general setup:**
+**General setup:**
 check if all is right e.g. monitoring the condor queue status, e.g.
 ```
 HTCONDOR:/home/submituser> htc -q
@@ -106,13 +106,13 @@ Total for query: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 su
 Total for all users: 8 jobs; 7 completed, 0 removed, 0 idle, 0 running, 1 held, 0 suspended
 
 ```
-Now you are up and running. On in the notebook/container move in the direcrory with your code. if you are using the container the **/home/submituser/** is a permanent directory to share data/code  with you hosting server
+Now you are up and running. On in the notebook/container move in the directory with your code. if you are using the container the **/home/submituser/** is a permanent directory to share data/code with your hosting server
 
-to submit your code, crate a **subfile** following the instructions: 
+to submit your code, create a **subfile** following the instructions: 
 
 * condor@INFN [https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job](https://codimd.infn.it/s/VD3RWisM6#Submitting-a-demo-job)
 * file IO [https://codimd.infn.it/s/pbisNdDlN](https://codimd.infn.it/s/pbisNdDlN) [esempio](https://github.com/CYGNUS-RD/cygno/blob/main/dev/presigned.py)
-* in the [folder](https://github.com/CYGNUS-RD/mycondor/tree/main/submituser) there are some exaple of code and submit files
+* in the [folder](https://github.com/CYGNUS-RD/mycondor/tree/main/submituser) there are some examples of code and submit files
 
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
 * use the command below to submit your job:
@@ -125,7 +125,7 @@ htc -q (all jobs)
 htc -m (my jobs)
 htc -j (all CYGNO user)
 ```
-to tranfer file
+to transfer file
 ```
 htc -f <jobid> <ceid>
 ```
@@ -133,9 +133,9 @@ to remove the job
 ```
 htc -r <jobid> <ceid>
 ```
-more dettailed info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
+more detailed info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
 
-some helpfull raw commands:
+some helpful raw commands:
 ```
 condor_submit sub_reco -spool -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it
 
@@ -145,7 +145,7 @@ condor_transfer_data XXXX -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.
 JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it ; condor_transfer_data ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -name ce02-htc.cr.cnaf.infn.it; sleep 60; done
 ```
 
-**CYGNO reconstruction submit example on TIER1@CANF with sigularity**
+**CYGNO reconstruction submit example on TIER1@CANF with singularity**
 * Open jupyter notebook/mycondor;
 * Start your server (version >=1.0.27);
 * Open the terminal on the notebook, type: ```htc -t``` and follow the instructions;
@@ -155,7 +155,7 @@ JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -na
 #!/bin/bash
 python3 reconstruction.py $1 -r $2 -j $3 --max-entries $4 --git $5
 ```
-* create a ***sub_reco*** file (outside the reconstruction folder), like following:
+* create a ***sub_reco*** file (outside the reconstruction folder), like the following:
 ```
 +SingularityImage = "docker://gmazzitelli/cygno-wn:v1.0.25-cygno"
 Requirements = HasSingularity
@@ -182,13 +182,13 @@ queue
 htc -s sub_reco
 ```
 
-### personaliaze your default queue @ INFN cloud
+### Personalize your default queue @ INFN cloud
 * check the default setup in condor file /etc/condor/condor_config.local
-* if you prefer to change it with differe queue ip (see below), you can setup yuor bash file, e.g.:
+* if you prefer to change it with different queue ip (see below), you can set up your bash file, e.g.:
   ```
   vi /jupyter-workspace/cloud-storage/USERNAME/.bashrc
   ```
-* put the following code in your bash file to setup queue 131.154.98.46 (the example is for the simulation 131.154.98.46)
+* put the following code in your bash file to set up queue 131.154.98.46 (the example is for the simulation 131.154.98.46)
   ```
   # config condor CYGNO queue
   cat > /etc/condor/condor_config.local << EOF 
