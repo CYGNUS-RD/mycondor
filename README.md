@@ -5,6 +5,7 @@ HOWTO submit jobs on CYGNO condor **INFN Cloud** or **TIER1@CANF** queues
 you can access the experiment queues:
 * via notebook https://notebook.cygno.cloud.infn.it/  
 * via [docker](https://docs.docker.com/get-docker/) with this [mycondor](https://github.com/CYGNUS-RD/mycondor) docker software
+* installing [HTCondor](https://htcondor.org/downloads/), cygnolib and oidc-gen ([see](https://github.com/CYGNUS-RD/cygno)) on your client computer
 * via TIER1 user interface ([TIER1 queue only](https://confluence.infn.it/display/TD/9+-+Job+submission))
 
 
