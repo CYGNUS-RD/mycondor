@@ -206,7 +206,7 @@ htc -s sub_reco
   ```
 * close and re-open your terminal, now the queues are configured forever (this is valid for any cluster configured under condor)
 
-- Queue 1 **reserved** to reco: 131.154.98.50   ( 5 Machines: 8core/16Gb RAM)
+- Queue 1 **reserved** to reco: 131.154.99.11   ( 5 Machines: 8core/16Gb RAM)
 - Queue 2 public:               131.154.98.168  (10 Machines: 4core/ 8Gb RAM)
 - Queue Sym and public:         131.154.99.181   ( 4 Machines: 8core/16Gb RAM)
 
