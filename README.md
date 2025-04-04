@@ -208,6 +208,6 @@ htc -s sub_reco
 
 - Queue 1 **reserved** to reco: 131.154.99.11   ( 5 Machines: 8core/16Gb RAM)
 - Queue 2 public:               131.154.98.168  (10 Machines: 4core/ 8Gb RAM)
-- Queue Sym and public:         131.154.99.179   ( 4 Machines: 8core/16Gb RAM)
+- Queue Sym and public:         131.154.98.46   ( 4 Machines: 8core/16Gb RAM)
 
 use **htc** command to access TIER1/CLOUD queue
