@@ -86,7 +86,13 @@ see help ```cygno_htc -h``` for full command available.
 
 ## Submit job to CNAF
 
-To submit jobs to the CNAF queues start from the templates provided in /cvmfs/sft-cygno.infn.it/config/templates/ path in Notebooks.
+To submit jobs to the CNAF queues start from the templates for reconstruction and digitization are provided in /cvmfs/sft-cygno.infn.it/config/templates/ path in Notebooks.
+In your private create a folder and a subfolder with the names you like. For example, Launch and Launch/Sub_folder. Copy the template files in Launch/Sub_folder/.
+Modify the subber.sh file (see later what is in the subberfile). Then from terminal, go to Launch folder and use ```source Sub_folder/subber.sh```. This will generate a folder in Launch/logs/newfolder with the exec and sub file, and it will automatically submit the job to the queue. Upon retrieve (```cygno_htc -f <jobID> <CEID>```) the .error .out and .log files will appear inside the logs/newfolder. A return file will also be saved in the Launch folder. It will contain the outcome of the executable program you launched in the queue (the reconstruction.py for the reconstruction example): 0=success; other number = fail.
+
+### Subber file content example
+Taking as anexample the /cvmfs/sft-cygno.infn.it/config/templates/subber.sh file, here follows a brief description:
+
 
 ## On old Queues (deprecated)
 ### Submit a job 
