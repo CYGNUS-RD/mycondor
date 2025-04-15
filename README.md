@@ -12,7 +12,7 @@ you can access the experiment queues:
 ### Submit jobs to INFN Cloud queues or TIER1@CNAF queues via notebook (recommended)
 * requirements: web browser and access to INFN cloud (see [howto](https://github.com/CYGNUS-RD/cygno/blob/main/infrastructure.md#signup-on-computing-ressources-needed-for-all-resources-cloud-lngs-lnf))
 * connect to Cygno cloud interface:  https://notebook.cygno.cloud.infn.it
-* open a terminal and use the command **htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor?tab=readme-ov-file#htc-command-line)
+* open a terminal and use the command **cygno_htc** to access your prefered queue [see help](https://github.com/CYGNUS-RD/mycondor?tab=readme-ov-file#htc-command-line)
 * optional, configure your [preferred queue ip](https://github.com/CYGNUS-RD/mycondor/blob/main/README.md#personaliaze-your-default-queue--infn-cloud)
 
 ### mycondor container (optional)
@@ -27,18 +27,18 @@ cd mycondor/
 docker-compose up -d
 docker exec -ti mycondor /bin/bash
 ```      
-* use **htc** command line to access TIER1/CLOUD queue
+* use **cygno_htc** command line to access TIER1/CLOUD queue
 * The **/home/submituser/** folder is shared with your computer facility where the docker is running
 
-### htc command line 
+### cygno_htc command line 
 
 * since cygnolib **v1.0.18**, cygno_htc script to configure and monitor TIER1/cloud has been included
-* since notebook **version >= v1.0.27** the cli htc has been set up to handle queue at TIER1 and on cloud
-* ```htc -t``` to configure/reauthenticate the TIER1 queues (reauthentication is needed when you restart notebook/docker)
-* ```htc -c``` to configure/reauthenticate @ the INFN cloud queue (reauthentication is needed when you restart the docker container,) 
-* to monitor the queue ```htc -q``` (type ```htc``` for help)
+* since notebook **version >= v1.0.27** the cli cygno_htc has been set up to handle queue at TIER1 and on cloud
+* ```cygno_htc -t``` to configure/reauthenticate the TIER1 queues (reauthentication is needed when you restart notebook/docker)
+* ```cygno_htc -c``` to configure/reauthenticate @ the INFN cloud queue (reauthentication is needed when you restart the docker container,) 
+* to monitor the queue ```cygno_htc -q``` (type ```cygno_htc -h``` for help)
 ```
-v1.0.27# htc --help
+v1.0.27# cygno_htc --help
 Usage:
   -t/-c --tier1/--cloud, configure/switch between htc@tier1 and htc@cloud
   -s --submit, submit a job:  -s <subfilename> <ceid> [only for tier1 ceid=1-7 default ce02]
@@ -49,13 +49,14 @@ Usage:
   -j --jobs, monitor all jobs: -j <ceid> [only for tier1 ceid=1-7 default ce02]
   -h --help, show this help
 ```
-<* if the queue is lost, you can reconfigure simply by typing again ```htc -t/``` or ```htc -c``` (job are not lost)
+<!-- * if the queue is lost, you can reconfigure simply by typing again ```cygno_htc -t/``` or ```cygno_htc -c``` (job are not lost)
 
 ![alt text](firstLogin.png "example of first login when creating tier1 authentication")
 
-after authentication check the queue status by typing ```htc -q```:>
+after authentication check the queue status by typing ```cygno_htc -q```: -->
+* For example to see the jobs queued on the default CE:
 ```
-HTCONDOR:/home/submituser> htc -q
+HTCONDOR:/home/submituser> cygno_htc -q
 htc@tier1
 
 
@@ -67,9 +68,9 @@ Total for query: 1 jobs; 1 completed, 0 removed, 0 idle, 0 running, 0 held, 0 su
 Total for cygno002: 1 jobs; 1 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended 
 Total for all users: 6091 jobs; 2307 completed, 0 removed, 264 idle, 3518 running, 2 held, 0 suspended
 ```
-the resources at TIER1@CANF are accessible via 7 CE that can be specified by adding the CE number to the **htc** command line e.g. ```htc -q 5```
+the resources at TIER1@CANF are accessible via 7 CE that can be specified by adding the CE number to the **cygno_htc** command line e.g. ```cygno_htc -q 5```
 ```
-HTCONDOR:/home/submituser> htc -q 5
+HTCONDOR:/home/submituser> cygno_htc -q 5
 htc@tier1
 
 
@@ -81,14 +82,19 @@ Total for query: 1 jobs; 1 completed, 0 removed, 0 idle, 0 running, 0 held, 0 su
 Total for cygno005: 1 jobs; 1 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended 
 Total for all users: 6202 jobs; 2341 completed, 0 removed, 393 idle, 3463 running, 5 held, 0 suspended
 ```
-see help ```htc -h``` for full command available. 
+see help ```cygno_htc -h``` for full command available. 
 
+## Submit job to CNAF
+
+To submit jobs to the CNAF queues start from the templates provided in /cvmfs/sft-cygno.infn.it/config/templates/ path in Notebooks.
+
+## On old Queues (deprecated)
 ### Submit a job 
 
 **General setup:**
 check if all is right e.g. monitoring the condor queue status, e.g.
 ```
-HTCONDOR:/home/submituser> htc -q
+HTCONDOR:/home/submituser> cygno_htc -q
 htc@cloud
 
 
@@ -118,21 +124,21 @@ to submit your code, create a **subfile** following the instructions:
 file tranfer: https://htcondor.readthedocs.io/en/latest/users-manual/file-transfer.html
 * use the command below to submit your job:
 ```
-htc -s <subfile>
+cygno_htc -s <subfile>
 ```
 * heck the job status and retrieve the job output using the following commands:
 ```
-htc -q (all jobs)
-htc -m (my jobs)
-htc -j (all CYGNO user)
+cygno_htc -q (all jobs)
+cygno_htc -m (my jobs)
+cygno_htc -j (all CYGNO user)
 ```
 to transfer file
 ```
-htc -f <jobid> <ceid>
+cygno_htc -f <jobid> <ceid>
 ```
 to remove the job
 ```
-htc -r <jobid> <ceid>
+cygno_htc -r <jobid> <ceid>
 ```
 more detailed info: https://confluence.infn.it/display/TD/Submission+to+the+new+cluster+HTC23
 
@@ -149,7 +155,7 @@ JOB=XXX; while true; do  condor_q ${JOB} -pool ce02-htc.cr.cnaf.infn.it:9619 -na
 **CYGNO reconstruction submit example on TIER1@CANF with singularity**
 * Open jupyter notebook/mycondor;
 * Start your server (version >=1.0.27);
-* Open the terminal on the notebook, type: ```htc -t``` and follow the instructions;
+* Open the terminal on the notebook, type: ```cygno_htc -t``` and follow the instructions;
 * pull reconstruction repository
 * create a exec_reco.sh file inside the reconstruction folder, like the following:
 ```
@@ -180,7 +186,7 @@ queue
 ```
 * and then use the command below to submit your job:
 ```
-htc -s sub_reco
+cygno_htc -s sub_reco
 ```
 
 ### Personalize your default queue @ INFN cloud
@@ -210,4 +216,4 @@ htc -s sub_reco
 - Queue 2 public:               131.154.98.168  (10 Machines: 4core/ 8Gb RAM)
 - Queue Sym and public:         131.154.98.46   ( 4 Machines: 8core/16Gb RAM)
 
-use **htc** command to access TIER1/CLOUD queue
+use **cygno_htc** command to access TIER1/CLOUD queue
