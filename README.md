@@ -49,11 +49,11 @@ Usage:
   -j --jobs, monitor all jobs: -j <ceid> [only for tier1 ceid=1-7 default ce02]
   -h --help, show this help
 ```
-* if the queue is lost, you can reconfigure simply by typing again ```htc -t/``` or ```htc -c``` (job are not lost)
+<* if the queue is lost, you can reconfigure simply by typing again ```htc -t/``` or ```htc -c``` (job are not lost)
 
 ![alt text](firstLogin.png "example of first login when creating tier1 authentication")
 
-after authentication check the queue status by typing ```htc -q```:
+after authentication check the queue status by typing ```htc -q```:>
 ```
 HTCONDOR:/home/submituser> htc -q
 htc@tier1
