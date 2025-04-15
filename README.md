@@ -93,11 +93,18 @@ Modify the subber.sh file (see later what is in the subberfile). Then from termi
 ### Subber file content example
 Taking as anexample the /cvmfs/sft-cygno.infn.it/config/templates/subber.sh file, here follows a brief description: <br />
 * RUN: it is a variable which for the reco is the run number to analyze. It can be explicitly written or be a passed argument (in bash script for example as $1). **Modify as you need to** 
-* BATCHNAME: variable which will be identifying you job on the queues and the .error .out .log files upon retrieve. Modify as you need to
-CE: queue identifier. Modify value between 1 and 6
-
-
-
+* BATCHNAME: variable which will be identifying your job on the queues and the .error .out .log  and the return_BATCHNAME.txt files upon retrieve. **Modify as you need to**
+* CE: queue identifier. **Modify value between 1 and 6**
+* IMAGE: reference image to run the program in. **Do not modify**
+* CPUs: number of CPUs to request for the job. There is a limit at 32, but the whole queue works on optimization. If you ask for 32 cores you will stay in the queue longer as you will need to wait for 32 cores to be free at the same time
+* EXECUTEPATH : absolute path on notebook to the folder where the executable file or program will be
+* EXECUTE: path to the executable file
+* ARGUMENTS : arguments required by theexecutable
+* OTHERFILE: Files or folders to upload to the machine follow the commented examples if needed. The limit of upload should be 10 MB, so clean your upload.
+* FILENAMES: list of the outputfiles of your code. This is a bit tricky: you need to know the name of the output files in advance. This way the outputfiles listed will be sent to the cloud automatically. You will not be able to retrieve thme with ```cygno_htc -f <jobID> <CEID>```.
+* ENDPOINT_URL: where do you want to upload the output files. Now S3 is the only working. **Do not modify**
+* BACKET: bucket where you want your files to be uploaded (cygno-data is forbidden)
+* TAG: path inside the bucket where you want your files to be uploaded. This can be modified, but in order to keep order on the cygno-analysis disk, the From_queue/ part must be kept. Any folder generated in cygno-analysis outside From_queue will be deleted.
 
 
 ## On old Queues (deprecated)
