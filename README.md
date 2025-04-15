@@ -88,10 +88,16 @@ see help ```cygno_htc -h``` for full command available.
 
 To submit jobs to the CNAF queues start from the templates for reconstruction and digitization are provided in /cvmfs/sft-cygno.infn.it/config/templates/ path in Notebooks. <br />
 In your private create a folder and a subfolder with the names you like. For example, Launch and Launch/Sub_folder. Copy the template files in Launch/Sub_folder/. <br />
-Modify the subber.sh file (see later what is in the subberfile). Then from terminal, go to Launch folder and use ```source Sub_folder/subber.sh```. This will generate a folder in Launch/logs/newfolder with the exec and sub file, and it will automatically submit the job to the queue. Upon retrieve (```cygno_htc -f <jobID> <CEID>```) the .error .out and .log files will appear inside the logs/newfolder. A return file will also be saved in the Launch folder. It will contain the outcome of the executable program you launched in the queue (the reconstruction.py for the reconstruction example): 0=success; other number = fail.
+Modify the subber.sh file (see later what is in the subberfile). Then from terminal, go to Launch folder and use ```source Sub_folder/subber.sh```. This will generate a folder in Launch/logs/newfolder with the exec and sub file, and it will automatically submit the job to the queue. Upon retrieve (```cygno_htc -f <jobID> <CEID>```) the .error .out and .log files will appear inside the logs/newfolder. A return file will also be saved in the Launch folder. It will contain the outcome of the executable program you launched in the queue (the reconstruction.py for the reconstruction example): 0=success; other number = fail. 
 
 ### Subber file content example
-Taking as anexample the /cvmfs/sft-cygno.infn.it/config/templates/subber.sh file, here follows a brief description:
+Taking as anexample the /cvmfs/sft-cygno.infn.it/config/templates/subber.sh file, here follows a brief description: <br />
+* RUN: it is a variable which for the reco is the run number to analyze. It can be explicitly written or be a passed argument (in bash script for example as $1). **Modify as you need to** 
+* BATCHNAME: variable which will be identifying you job on the queues and the .error .out .log files upon retrieve. Modify as you need to
+CE: queue identifier. Modify value between 1 and 6
+
+
+
 
 
 ## On old Queues (deprecated)
